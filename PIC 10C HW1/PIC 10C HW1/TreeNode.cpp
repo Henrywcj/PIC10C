@@ -84,6 +84,10 @@ void BinarySearchTree::print(TreeNode* node)
 
 BinarySearchTree::BinarySearchTree(const BinarySearchTree& obj)
 {
+    if (obj.root == nullptr){ // if the obj.root points to nullptr
+        root = nullptr;
+        return;
+    }
     root = copy(obj.root);
 }
 
@@ -122,4 +126,5 @@ void BinarySearchTree::kill_tree(TreeNode* node_ptr)
         node_ptr->right = nullptr;
     }
     delete node_ptr;
+    node_ptr = nullptr;
 }
