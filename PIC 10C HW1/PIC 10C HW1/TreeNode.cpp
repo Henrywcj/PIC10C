@@ -93,7 +93,7 @@ BinarySearchTree::BinarySearchTree(const BinarySearchTree& obj)
 
 BinarySearchTree& BinarySearchTree::operator=(const BinarySearchTree &obj)
 {
-    if (&obj != this)
+    if (&obj != this) // check boundary 
     {
         kill_tree(root); // first clean up
         root = copy(obj.root); // then copy
@@ -103,6 +103,10 @@ BinarySearchTree& BinarySearchTree::operator=(const BinarySearchTree &obj)
 
 TreeNode* BinarySearchTree::copy(TreeNode* node_ptr)
 {
+    if (node_ptr == nullptr) // check boundary
+    {
+        return nullptr;
+    }
     TreeNode* rt = new TreeNode();
     rt->data = node_ptr->data;
     if (node_ptr->left != nullptr){ // if the left tree is not empty, copy the left tree
